@@ -1,0 +1,25 @@
+﻿@model SistemaConsultorioDental.Domain.Entities.Dentista
+
+@{
+    ViewData["Title"] = "Eliminar Dentista";
+}
+
+<h2 class="text-danger">¿Seguro que deseas eliminar este dentista?</h2>
+
+<div class="card p-3 mt-4">
+    <p><strong>Nombre Completo:</strong> @Model.NombreCompleto</p>
+    <p><strong>Teléfono:</strong> @Model.Telefono</p>
+    <p><strong>Email:</strong> @Model.Email</p>
+</div>
+
+<form asp-action="EliminarDentistaConfirmado" method="post">
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" asp-for="Id" />
+
+    <p>¿Seguro que deseas eliminar al dentista <strong>@Model.NombreCompleto</strong>?</p>
+
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-action="MostrarDentista" class="btn btn-secondary">Cancelar</a>
+</form>
+

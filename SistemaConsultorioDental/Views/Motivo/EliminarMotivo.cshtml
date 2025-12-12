@@ -1,0 +1,22 @@
+﻿@model SistemaConsultorioDental.Domain.Entities.Motivo
+
+
+<h2>Eliminar Motivo</h2>
+
+
+<div class="alert alert-warning">
+    ¿Está seguro de que desea eliminar este Motivo?
+</div>
+
+
+<p><strong>ID:</strong> @Model.Id</p>
+<p><strong>Descripción:</strong> @Model.Descripcion</p>
+
+
+<form asp-action="ConfirmarEliminar" method="post" class="mt-3">
+    <input type="hidden" asp-for="Id" />
+
+
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-action="MostrarMotivo" class="btn btn-secondary">Cancelar</a>
+</form>

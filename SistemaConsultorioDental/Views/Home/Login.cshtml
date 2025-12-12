@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container mt-5" style="max-width: 450px;">
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        TempData.Remove("SuccessMessage");
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        TempData.Remove("ErrorMessage");
+    }
+
+    <h2 class="text-center mb-4">Inicio de Sesión</h2>
+
+    <form asp-action="Login" method="post">
+        <div class="mb-3">
+            <label class="form-label">Nombre Completo</label>
+            <input type="text" name="NombreCompleto" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Contraseña</label>
+            <input type="password" name="Password" class="form-control" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
+    </form>
+
+    <div class="text-center mt-3">
+        ¿No tienes cuenta?
+        <a asp-controller="Home" asp-action="Register">Regístrate aquí</a>
+    </div>
+</div>

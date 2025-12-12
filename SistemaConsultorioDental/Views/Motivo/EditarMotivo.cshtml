@@ -1,0 +1,19 @@
+﻿@model SistemaConsultorioDental.Domain.Entities.Motivo
+
+
+<h2>Editar Motivo</h2>
+
+
+<form asp-action="EditarMotivo" method="post" class="mt-3">
+    <input type="hidden" asp-for="Id" />
+
+
+    <div class="form-group">
+        <label>Descripción</label>
+        <input asp-for="Descripcion" class="form-control" />
+    </div>
+
+
+    <button type="submit" class="btn btn-primary mt-3">Actualizar</button>
+    <a asp-action="MostrarMotivo" class="btn btn-secondary mt-3">Cancelar</a>
+</form>

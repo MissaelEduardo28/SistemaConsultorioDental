@@ -1,0 +1,21 @@
+﻿@model SistemaConsultorioDental.Domain.Entities.Paciente
+
+@{
+    ViewData["Title"] = "Eliminar Paciente";
+}
+
+<h2>¿Está seguro que desea eliminar este paciente?</h2>
+
+<div class="alert alert-warning">
+    Esta acción no se puede deshacer.
+</div>
+
+<h4>@Model.NombreCompleto</h4>
+<p>Tel: @Model.Telefono</p>
+<p>Nacionalidad: @Model.Nacionalidad</p>
+
+<form asp-action="EliminarPaciente">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-controller="Home" asp-action="Menu" class="btn btn-secondary">Cancelar</a>
+</form>

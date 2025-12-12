@@ -1,0 +1,46 @@
+﻿@model SistemaConsultorioDental.Domain.Entities.Paciente
+
+@{
+    ViewData["Title"] = "Registro de Paciente";
+}
+
+<div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="p-4 border rounded shadow-sm">
+        <h1>Registrar Paciente</h1>
+        <br />
+
+        <form asp-controller="Home" asp-action="Register" method="post" style="min-width: 300px;">
+
+            <div class="form-group mb-3">
+                <label asp-for="NombreCompleto"></label>
+                <input asp-for="NombreCompleto" class="form-control" required />
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" type="password" class="form-control" required />
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Telefono"></label>
+                <input asp-for="Telefono" class="form-control" />
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Nacionalidad"></label>
+                <input asp-for="Nacionalidad" class="form-control" />
+            </div>
+
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-success">Registrar</button>
+            </div>
+
+            <br />
+
+            <div class="text-center">
+                <a asp-controller="Home" asp-action="Login">Volver al Login</a>
+            </div>
+
+        </form>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+﻿@model SistemaConsultorioDental.Domain.Entities.Cita
+
+@{
+    ViewData["Title"] = "Editar Cita";
+}
+
+<h2>Editar Cita</h2>
+
+<form asp-action="EditarCitas" method="post">
+
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="PacienteId" />
+
+    <!-- Dentista -->
+    <div class="mb-3">
+        <label class="form-label">Dentista</label>
+        <select asp-for="DentistaId" class="form-control" required>
+            @foreach (var dentista in ViewBag.Dentistas)
+            {
+                <option value="@dentista.Id" selected="@(dentista.Id == Model.DentistaId)">
+                    @dentista.NombreCompleto
+                </option>
+            }
+        </select>
+
+    </div>
+
+    <!-- Motivo -->
+    <div class="mb-3">
+        <label class="form-label">Motivo</label>
+        <select asp-for="MotivoId" class="form-control" required>
+            @foreach (var motivo in ViewBag.Motivos)
+            {
+                <option value="@motivo.Id" selected="@(motivo.Id == Model.MotivoId)">
+                    @motivo.Descripcion
+                </option>
+            }
+        </select>
+
+    </div>
+
+    <!-- Fecha -->
+    <div class="mb-3">
+        <label class="form-label">Fecha</label>
+        <input asp-for="Fecha" type="date" class="form-control" required />
+    </div>
+
+    <!-- Hora -->
+    <div class="mb-3">
+        <label class="form-label">Hora</label>
+        <input asp-for="Hora" type="time" class="form-control" required />
+    </div>
+
+    <!-- Duración -->
+    <div class="mb-3">
+        <label class="form-label">Duración (minutos)</label>
+        <input asp-for="DuracionMinutos" type="number" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+
+    <a asp-controller="Citas"
+       asp-action="MostrarCitas"
+       asp-route-id="@Model.PacienteId"
+       class="btn btn-secondary">
+        Volver
+    </a>
+
+</form>

@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.0" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.15.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.0" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\SistemaConsultorioDental.Application\SistemaConsultorioDental.Application.csproj" />
+		<ProjectReference Include="..\SistemaConsultorioDental.Infrastructure\SistemaConsultorioDental.Infrastructure.csproj" />
+		<ProjectReference Include="..\SistemaConsultorioDental.Persistance\SistemaConsultorioDental.Persistance.csproj" />
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,6 @@
+@SistemaConsultorioDental.API_HostAddress = http://localhost:5116
+
+GET {{SistemaConsultorioDental.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

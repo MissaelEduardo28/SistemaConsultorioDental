@@ -1,0 +1,39 @@
+﻿@model IEnumerable<SistemaConsultorioDental.Domain.Entities.Motivo>
+
+
+<h2 class="text-center mb-4">Lista de Motivos</h2>
+
+
+<a asp-action="AgregarMotivo" class="btn btn-primary mb-3">Agregar Motivo</a>
+
+<a class="btn btn-primary mb-3" asp-controller="Home" asp-action="Menu">Volver al Menu</a>
+
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var motivo in Model)
+        {
+            <tr>
+                <td>@motivo.Id</td>
+                <td>@motivo.Descripcion</td>
+                <td>
+                    <a asp-action="EditarMotivo" asp-route-id="@motivo.Id" class="btn btn-warning btn-sm">Editar</a>
+                    <a asp-action="EliminarMotivo" asp-route-id="@motivo.Id" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,30 @@
+﻿@model SistemaConsultorioDental.Domain.Entities.Cita
+
+@{
+    ViewData["Title"] = "Eliminar Cita";
+}
+
+<h2 class="text-danger">¿Deseas eliminar esta cita?</h2>
+
+<div class="card p-3 mb-4 bg-light">
+    <p><strong>Dentista:</strong> @Model.Dentista?.NombreCompleto</p>
+    <p><strong>Motivo:</strong> @Model.Motivo?.Descripcion</p>
+    <p><strong>Fecha:</strong> @Model.Fecha.ToShortDateString()</p>
+    <p><strong>Hora:</strong> @Model.Hora</p>
+    <p><strong>Duración:</strong> @Model.DuracionMinutos minutos</p>
+    <p><strong>Estado:</strong> @Model.Estado</p>
+</div>
+
+<form asp-action="EliminarCitasConfirmado" method="post">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="PacienteId" />
+
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+
+    <a asp-controller="Citas"
+       asp-action="MostrarCitas"
+       asp-route-id="@Model.PacienteId"
+       class="btn btn-secondary">
+        Cancelar
+    </a>
+</form>

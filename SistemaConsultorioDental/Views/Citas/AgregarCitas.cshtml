@@ -1,0 +1,64 @@
+﻿@model SistemaConsultorioDental.Domain.Entities.Cita
+
+@{
+    ViewData["Title"] = "Agregar Cita";
+}
+
+<h2>Agregar Cita</h2>
+
+<form asp-action="AgregarCitas" method="post">
+
+    <input type="hidden" asp-for="PacienteId" />
+
+    <div class="mb-3">
+        <label class="form-label">Dentista</label>
+        <select asp-for="DentistaId" class="form-control" required>
+            <option value="">Seleccione un dentista</option>
+            @foreach (var dentista in ViewBag.Dentistas)
+            {
+                <option value="@dentista.Id">@dentista.NombreCompleto</option>
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Motivo</label>
+        <select asp-for="MotivoId" class="form-control" required>
+            <option value="">Seleccione un motivo</option>
+            @foreach (var motivo in ViewBag.Motivos)
+            {
+                <option value="@motivo.Id">@motivo.Descripcion</option>
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Fecha</label>
+        <input asp-for="Fecha"
+               type="date"
+               asp-format="yyyy-MM-dd"
+               class="form-control"
+               required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Hora</label>
+        <input asp-for="Hora"
+               type="time"
+               class="form-control"
+               step="60"
+               required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Duración (minutos)</label>
+        <input asp-for="DuracionMinutos"
+               type="number"
+               class="form-control"
+               required />
+    </div>
+
+    <button type="submit" class="btn btn-success">Guardar Cita</button>
+    <a asp-action="MostrarCitas" asp-route-id="@Model.PacienteId" class="btn btn-secondary">Volver</a>
+
+</form>

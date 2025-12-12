@@ -1,0 +1,45 @@
+﻿@model IEnumerable<SistemaConsultorioDental.Domain.Entities.Dentista>
+
+@{
+    ViewData["Title"] = "Dentistas";
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+
+<h2 class="text-center mb-4">Listado de Dentistas</h2>
+
+<a asp-action="AgregarDentista" class="btn btn-primary mb-3">Agregar Dentista</a>
+
+<a class="btn btn-primary mb-3" asp-controller="Home" asp-action="Menu">Volver al Menu</a>
+
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Nombre Completo</th>
+            <th>Teléfono</th>
+            <th>Email</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var d in Model)
+        {
+            <tr>
+                <td>@d.NombreCompleto</td>
+                <td>@d.Telefono</td>
+                <td>@d.Email</td>
+                <td>
+                    <a asp-action="EditarDentista" asp-route-id="@d.Id" class="btn btn-warning btn-sm">Editar</a>
+                    <a asp-action="EliminarDentista" asp-route-id="@d.Id" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

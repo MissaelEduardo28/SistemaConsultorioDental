@@ -1,0 +1,72 @@
+﻿@model IEnumerable<SistemaConsultorioDental.Domain.Entities.Cita>
+
+@{
+    ViewData["Title"] = "Citas del Paciente";
+    var paciente = ViewBag.Paciente;
+}
+
+<h2 class="text-center mb-4">Citas de @paciente.NombreCompleto</h2>
+
+<a class="btn btn-primary mb-3"
+   asp-action="AgregarCitas"
+   asp-route-pacienteId="@paciente.Id">
+    Agregar Cita
+</a>
+
+<a class="btn btn-primary mb-3" asp-controller="Home" asp-action="Menu">Volver al Menu</a>
+
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ID Cita</th>
+            <th>PacienteId</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Duración (min)</th>
+            <th>Dentista</th>
+            <th>Motivo</th>
+            <th>Tiempo Restante</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var cita in Model)
+        {
+            <tr>
+                <td>@cita.Id</td>
+                <td>@cita.PacienteId</td>
+
+                <td>@cita.Fecha.ToString("dd/MM/yyyy")</td>
+                <td>@cita.Hora.ToString(@"hh\:mm")</td>
+
+                <td>@cita.DuracionMinutos</td>
+
+                <td>@cita.Dentista?.NombreCompleto</td>
+                <td>@cita.Motivo?.Descripcion</td>
+
+                <td>
+                    @(
+                                    cita.TiempoRestante.TotalHours > 0
+                                    ? $"{(int)cita.TiempoRestante.TotalDays} días, {cita.TiempoRestante.Hours} hrs"
+                                    : "0"
+                                    )
+            </td>
+
+                <td>@cita.Estado</td>
+
+                <td>
+                    <a asp-action="EditarCitas"
+                       asp-route-id="@cita.Id"
+                       class="btn btn-warning btn-sm">Editar</a>
+
+                    <a asp-action="EliminarCitas"
+                       asp-route-id="@cita.Id"
+                       class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+                }
+    </tbody>
+</table>

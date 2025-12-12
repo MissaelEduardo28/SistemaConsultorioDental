@@ -1,0 +1,94 @@
+﻿@{
+    ViewData["Title"] = "Página Principal";
+}
+
+<style>
+
+    body {
+        background: #f2f6fc;
+    }
+
+    /* Contenedor de las tarjetas */
+    .menu-card {
+        background: white;
+        border-radius: 15px;
+        padding: 25px;
+        text-align: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        cursor: pointer;
+        text-decoration: none;
+        color: #333;
+    }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+        }
+
+        .menu-card h5 {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+    /* Íconos */
+    .menu-icon {
+        font-size: 40px;
+        color: #0d6efd;
+    }
+</style>
+
+
+@if (TempData["InfoMessage"] != null)
+{
+    <div class="alert alert-success text-center mt-3">
+        @TempData["InfoMessage"]
+    </div>
+}
+
+<h2 class="text-center mt-4">Bienvenido, @ViewBag.PacienteNombre</h2>
+
+<div class="container mt-5">
+    <div class="row g-4 justify-content-center">
+
+        <div class="col-md-3">
+            <a asp-controller="Paciente" asp-action="MostrarPaciente" class="menu-card d-block">
+                <div class="menu-icon">
+                    <i class="bi bi-people-fill"></i>
+                </div>
+                <h5>Pacientes</h5>
+            </a>
+        </div>
+
+        <div class="col-md-3">
+            <a asp-controller="Citas"
+               asp-action="MostrarCitas"
+               asp-route-id="@ViewBag.PacienteId"
+               class="menu-card d-block">
+                <div class="menu-icon">
+                    <i class="bi bi-calendar-check-fill"></i>
+                </div>
+                <h5>Citas</h5>
+            </a>
+        </div>
+
+        <div class="col-md-3">
+            <a asp-controller="Dentista" asp-action="MostrarDentista" class="menu-card d-block">
+                <div class="menu-icon">
+                    <i class="bi bi-person-badge-fill"></i>
+                </div>
+                <h5>Dentistas</h5>
+            </a>
+        </div>
+
+        <div class="col-md-3">
+            <a asp-controller="Motivo" asp-action="MostrarMotivo" class="menu-card d-block">
+                <div class="menu-icon">
+                    <i class="bi bi-card-checklist"></i>
+                </div>
+                <h5>Motivos de Citas</h5>
+            </a>
+        </div>
+
+    </div>
+</div>
